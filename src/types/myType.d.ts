@@ -1,0 +1,1 @@
+export type SizeVariation = "min" | "small" | "medium" | "large" | "max"
