@@ -8,13 +8,15 @@ export const theme = {
         darK: "#003300",
         light: "#4c8c4a",
       },
-      black: "#000",
+      black: "#000000",
       typography: {
+        main: "#333333",
         white: "#FFF",
       },
-      grey: "#616161",
+      grey: "#CCCCCC",
       background: {
-        white: "#F6F9FC",
+        white: "#FFFFFF",
+        main: "#F6F9FC",
       },
     },
     size: {

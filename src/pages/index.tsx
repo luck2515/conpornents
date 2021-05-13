@@ -1,10 +1,6 @@
 import React from "react";
-import InputForm from "../components/molecules/InputForm";
+import Top from "../components/templates/Top";
 
 export default function Home() {
-  return (
-    <main>
-      <InputForm />
-    </main>
-  );
+  return <Top />;
 }
