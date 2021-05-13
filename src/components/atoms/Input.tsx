@@ -34,8 +34,8 @@ const Input = styled.input<{ fullWidth?: boolean; inputSize?: SizeVariation }>`
     outline: none;
   }
   ${({ inputSize }) => css`
-    width: ${({ theme }) => theme.size.button.width[inputSize]};
-    height: ${({ theme }) => theme.size.button.height[inputSize]};
+    width: ${({ theme }) => theme.default.size.button.width[inputSize]};
+    height: ${({ theme }) => theme.default.size.button.height[inputSize]};
   `}
   ${({ fullWidth }) =>
     fullWidth &&
@@ -43,8 +43,8 @@ const Input = styled.input<{ fullWidth?: boolean; inputSize?: SizeVariation }>`
       width: 100%;
     `}
     padding: 10px;
-  border: 1px solid ${({ theme }) => theme.palette.black};
-  background-color: ${({ theme }) => theme.palette.background.white};
+  border: 1px solid ${({ theme }) => theme.default.palette.black};
+  background-color: ${({ theme }) => theme.default.palette.background.white};
 `;
 
 export default InputComponent;
