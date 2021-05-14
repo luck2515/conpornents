@@ -44,14 +44,10 @@ const Button = styled.button<{
       width: 100%;
     `}
   padding: 0;
-  border: 1px solid ${({ theme }) => theme.default.palette.black};
-  background-color: ${({ theme }) => theme.default.palette.background.white};
+  border: 1px solid ${({ theme }) => theme.default.palette.background.black};
+  background-color: ${({ theme }) => theme.default.palette.background.black};
   cursor: pointer;
-  transition: 0.3s;
-  &:hover {
-    color: ${({ theme }) => theme.default.palette.typography.white};
-    background-color: ${({ theme }) => theme.default.palette.black};
-  }
+  box-shadow: 0.9px 1px 2px rgba(0, 0, 0, 0.2);
 `;
 
 export default ButtonComponent;

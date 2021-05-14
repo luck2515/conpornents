@@ -6,21 +6,21 @@ type InputProps = Omit<JSX.IntrinsicElements["input"], "ref">;
 type Props = InputProps & {
   className?: string;
   fullWidth?: boolean;
-  size?: SizeVariation;
+  inputSize?: SizeVariation;
 };
 
 const InputComponent: React.FC<Props> = memo(
   ({
     className,
     children,
-    size = "medium",
+    inputSize = "medium",
     fullWidth = false,
     ...inputProps
   }) => {
     return (
       <Input
         className={className}
-        inputSize={size}
+        inputSize={inputSize}
         fullWidth={fullWidth}
         {...inputProps}
       />
@@ -29,9 +29,10 @@ const InputComponent: React.FC<Props> = memo(
 );
 
 const Input = styled.input<{ fullWidth?: boolean; inputSize?: SizeVariation }>`
-  /* chromeが自動付与する枠線を削除 */
   &:focus {
+    /* chromeが自動付与する枠線を削除 */
     outline: none;
+    border: 1px solid ${({ theme }) => theme.default.palette.black};
   }
   ${({ inputSize }) => css`
     width: ${({ theme }) => theme.default.size.button.width[inputSize]};
@@ -43,8 +44,9 @@ const Input = styled.input<{ fullWidth?: boolean; inputSize?: SizeVariation }>`
       width: 100%;
     `}
     padding: 10px;
-  border: 1px solid ${({ theme }) => theme.default.palette.black};
+  border: 1px solid ${({ theme }) => theme.default.palette.grey};
   background-color: ${({ theme }) => theme.default.palette.background.white};
+  box-shadow: 0.9px 1px 2px rgba(0, 0, 0, 0.2);
 `;
 
 export default InputComponent;
