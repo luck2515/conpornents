@@ -13,7 +13,7 @@ const InputFormComponent: React.FC<Props> = memo(
   ({ className, isMobile, size }) => {
     return (
       <InputForm className={className} isMobile={isMobile}>
-        <SearchInput fullWidth={true} isMobile={isMobile} inputSize={size} />
+        <SearchInput fullWidth={true} inputSize={size} />
         <Button size={size} />
       </InputForm>
     );
@@ -35,15 +35,9 @@ const InputForm = styled.div<{ isMobile: boolean }>`
     `}
 `;
 
-const SearchInput = styled(Input)<{ isMobile: boolean }>`
+const SearchInput = styled(Input)`
   background: white;
   border: solid 1px ${({ theme }) => theme.default.palette.grey};
-  min-width: 150px;
-  ${({ isMobile }) =>
-    isMobile &&
-    css`
-      max-width: calc(100vw - 58px);
-    `}
 `;
 
 export default InputFormComponent;

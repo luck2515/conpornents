@@ -7,7 +7,11 @@ interface Props {
 }
 const CardComponent: React.FC<Props> = memo(({ className, isMobile }) => {
   return (
-    <Card className={className} isMobile={isMobile}>
+    <Card
+      className={className}
+      isMobile={isMobile}
+      onClick={() => console.log("click")}
+    >
       <CardImage isMobile={isMobile} />
       <CardText isMobile={isMobile} />
     </Card>
@@ -18,24 +22,23 @@ const Card = styled.div<{ isMobile: boolean }>`
   height: 240px;
   width: 100%;
   max-width: 200px;
+  min-width: 150px;
   border: solid 1px ${({ theme }) => theme.default.palette.grey};
   cursor: pointer;
-  margin-left: 16px;
-  margin-top: 40px;
-  transition: 0.5s;
-  box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
-  &:hover {
-    box-shadow: #ddd 2px 4px 4px;
-  }
   ${({ isMobile }) =>
     isMobile &&
     css`
+      transition: 0.5s;
+      box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
       max-width: initial;
       margin-left: initial;
       margin-top: 8px;
       height: 120px;
       display: flex;
       width: 100%;
+      &:hover {
+        box-shadow: #ddd 2px 4px 4px;
+      }
     `}
 `;
 

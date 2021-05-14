@@ -9,12 +9,12 @@ interface Props {
   className?: string;
 }
 const TopComponent: React.FC<Props> = memo(({ className }) => {
-  const { isMobileSite } = useMediaQueryContext();
+  const { isMobile } = useMediaQueryContext();
   return (
     <Layout>
-      <Top className={className} isMobile={isMobileSite}>
-        <SearchInputForm isMobile={isMobileSite} size="large" />
-        <PickUp isMobile={isMobileSite} />
+      <Top className={className} isMobile={isMobile}>
+        <Search isMobile={isMobile} size="large" />
+        <PickUp isMobile={isMobile} />
       </Top>
     </Layout>
   );
@@ -25,6 +25,15 @@ const Top = styled.div<{ isMobile: boolean }>`
     isMobile &&
     css`
       padding: 8px;
+    `}
+`;
+
+const Search = styled(SearchInputForm)`
+  min-width: 150px;
+  ${({ isMobile }) =>
+    isMobile &&
+    css`
+      max-width: calc(100vw - 58px);
     `}
 `;
 

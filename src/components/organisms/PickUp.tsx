@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import styled, { css } from "styled-components";
 import Link from "next/link";
+import Slider from "react-slick";
 import Card from "../molecules/Card";
 
 interface Props {
@@ -8,14 +9,45 @@ interface Props {
   isMobile?: boolean;
 }
 const PickUpComponent: React.FC<Props> = memo(({ className, isMobile }) => {
+  const sliderSettings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    initialSlide: 1,
+    responsive: [
+      {
+        breakpoint: 920,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <PickUp className={className}>
       <SectionTitle isMobile={isMobile}>〇〇〇一覧</SectionTitle>
-      <CardList isMobile={isMobile}>
-        {[...Array(4)].map(() => {
-          return <Card isMobile={isMobile} />;
-        })}
-      </CardList>
+      {isMobile ? (
+        <MobileCardList isMobile={isMobile}>
+          {[...Array(4)].map(() => {
+            return <Card isMobile={isMobile} />;
+          })}
+        </MobileCardList>
+      ) : (
+        <PcCardList {...sliderSettings}>
+          {[...Array(8)].map(() => {
+            return <Card isMobile={isMobile} />;
+          })}
+        </PcCardList>
+      )}
       <MoreLinkWrapper isMobile={isMobile}>
         <Link
           href={{
@@ -44,21 +76,8 @@ const SectionTitle = styled.div<{ isMobile: boolean }>`
     `}
 `;
 
-const CardList = styled.div<{ isMobile: boolean }>`
-  padding: 0 24px;
-  margin-left: -16px;
-  margin-top: -40px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  ${({ isMobile }) =>
-    isMobile &&
-    css`
-      padding: 0;
-      margin-left: initial;
-      margin-top: -8px;
-    `}
-`;
+const MobileCardList = styled.div<{ isMobile: boolean }>``;
+const PcCardList = styled(Slider)``;
 
 const MoreLinkWrapper = styled.div<{ isMobile: boolean }>`
   display: flex;

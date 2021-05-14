@@ -8,19 +8,19 @@ type Props = {
 // アプリケーション全体で共有する値の定義
 type Context = {
   // モバイルか？
-  isMobileSite: boolean;
+  isMobile: boolean;
   // タブレットか？
-  isTabletSite: boolean;
+  isTablet: boolean;
   // PCか？
-  isPcSite: boolean;
+  isPc: boolean;
 };
 
 // Contextの生成
 // デフォルトはPCとする。
 const MediaQueryContext = createContext<Context>({
-  isMobileSite: false,
-  isTabletSite: false,
-  isPcSite: true,
+  isMobile: false,
+  isTablet: false,
+  isPc: true,
 });
 
 // 各デバイスでのサイズを定義
@@ -31,12 +31,12 @@ const mediaQueries = {
 };
 
 export const MediaQueryProvider: FC<Props> = ({ children }: Props) => {
-  const isMobileSite = useMedia(mediaQueries.mobile);
-  const isTabletSite = useMedia(mediaQueries.tablet);
-  const isPcSite = useMedia(mediaQueries.pc);
+  const isMobile = useMedia(mediaQueries.mobile);
+  const isTablet = useMedia(mediaQueries.tablet);
+  const isPc = useMedia(mediaQueries.pc);
   const value = useMemo(
-    () => ({ isMobileSite, isTabletSite, isPcSite }),
-    [isMobileSite, isTabletSite, isPcSite]
+    () => ({ isMobile, isTablet, isPc }),
+    [isMobile, isTablet, isPc]
   );
 
   return (
