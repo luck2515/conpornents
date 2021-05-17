@@ -1,50 +1,30 @@
 import React, { memo } from "react";
 import styled, { css } from "styled-components";
 import Link from "next/link";
-import Slider from "react-slick";
 import Card from "../molecules/Card";
+import { useWindowDimensions } from "../../utils/useWindowDimensions";
 
 interface Props {
   className?: string;
   isMobile?: boolean;
 }
 const PickUpComponent: React.FC<Props> = memo(({ className, isMobile }) => {
-  const sliderSettings = {
-    infinite: true,
-    slidesToShow: 4,
-    swipeToSlide: true,
-    responsive: [
-      {
-        breakpoint: 920,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 680,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-    ],
-  };
+  const array = [...Array(4)];
+  const { width } = useWindowDimensions();
 
   return (
     <PickUp className={className}>
       <SectionTitle isMobile={isMobile}>〇〇〇一覧</SectionTitle>
-      {isMobile ? (
-        <MobileCardList isMobile={isMobile}>
-          {[...Array(4)].map(() => {
-            return <Card isMobile={isMobile} />;
-          })}
-        </MobileCardList>
-      ) : (
-        <PcCardList {...sliderSettings}>
-          {[...Array(8)].map(() => {
-            return <Card isMobile={isMobile} />;
-          })}
-        </PcCardList>
-      )}
+      <CardList isMobile={isMobile}>
+        {(550 <= width && width < 700
+          ? array.slice(0, 3)
+          : 467 < width && width < 550
+          ? array.slice(0, 2)
+          : array
+        ).map(() => {
+          return <Card isMobile={isMobile} />;
+        })}
+      </CardList>
       <MoreLinkWrapper isMobile={isMobile}>
         <Link
           href={{
@@ -61,9 +41,7 @@ const PickUpComponent: React.FC<Props> = memo(({ className, isMobile }) => {
   );
 });
 
-const PickUp = styled.div`
-  border: solid 1px #ccc;
-`;
+const PickUp = styled.div``;
 const SectionTitle = styled.div<{ isMobile: boolean }>`
   margin-bottom: 8px;
   color: ${({ theme }) => theme.default.palette.typography.main};
@@ -74,8 +52,21 @@ const SectionTitle = styled.div<{ isMobile: boolean }>`
     `}
 `;
 
-const MobileCardList = styled.div<{ isMobile: boolean }>``;
-const PcCardList = styled(Slider)``;
+const CardList = styled.div<{ isMobile: boolean }>`
+  ${({ isMobile }) =>
+    !isMobile &&
+    css`
+      display: flex;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      justify-content: space-between;
+      & > * {
+        &:not(:last-child) {
+          margin-right: 12px;
+        }
+      }
+    `}
+`;
 
 const MoreLinkWrapper = styled.div<{ isMobile: boolean }>`
   display: flex;
