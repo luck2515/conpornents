@@ -11,10 +11,8 @@ interface Props {
 const PickUpComponent: React.FC<Props> = memo(({ className, isMobile }) => {
   const sliderSettings = {
     infinite: true,
-    speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
-    initialSlide: 1,
+    swipeToSlide: true,
     responsive: [
       {
         breakpoint: 920,
@@ -23,10 +21,9 @@ const PickUpComponent: React.FC<Props> = memo(({ className, isMobile }) => {
         },
       },
       {
-        breakpoint: 640,
+        breakpoint: 680,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
         },
       },
     ],
@@ -64,9 +61,10 @@ const PickUpComponent: React.FC<Props> = memo(({ className, isMobile }) => {
   );
 });
 
-const PickUp = styled.div``;
+const PickUp = styled.div`
+  border: solid 1px #ccc;
+`;
 const SectionTitle = styled.div<{ isMobile: boolean }>`
-  margin-left: 30px;
   margin-bottom: 8px;
   color: ${({ theme }) => theme.default.palette.typography.main};
   ${({ isMobile }) =>
@@ -82,7 +80,6 @@ const PcCardList = styled(Slider)``;
 const MoreLinkWrapper = styled.div<{ isMobile: boolean }>`
   display: flex;
   justify-content: right;
-  margin-right: 30px;
   margin-top: 8px;
   ${({ isMobile }) =>
     isMobile &&

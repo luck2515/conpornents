@@ -30,8 +30,8 @@ const SearchConditionModalComponent: React.FC<Props> = memo(({ className }) => {
   }, []);
 
   return (
-    <>
-      <p onClick={openModal}>詳細検索</p>
+    <SearchConditionModal className={className}>
+      <ModalButton onClick={openModal}>詳細検索</ModalButton>
       <Modal
         className={className}
         isOpen={isOpen}
@@ -40,11 +40,19 @@ const SearchConditionModalComponent: React.FC<Props> = memo(({ className }) => {
       >
         <BatsuButton onClick={closeModal}>×</BatsuButton>
       </Modal>
-    </>
+    </SearchConditionModal>
   );
 });
 
-const SearchConditionModal = styled(Modal)``;
+const SearchConditionModal = styled.div``;
+const ModalButton = styled.button`
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+`;
+
 const BatsuButton = styled.p`
   font-size: 2.5rem;
   font-weight: 100;

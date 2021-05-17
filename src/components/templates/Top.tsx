@@ -15,8 +15,8 @@ const TopComponent: React.FC<Props> = memo(({ className }) => {
     <Layout>
       <Top className={className} isMobile={isMobile}>
         <Search isMobile={isMobile} size="large" />
-        <SearchConditionModal />
-        <PickUp isMobile={isMobile} />
+        <SearchCondition />
+        <PickUp1 isMobile={isMobile} />
       </Top>
     </Layout>
   );
@@ -24,19 +24,33 @@ const TopComponent: React.FC<Props> = memo(({ className }) => {
 
 const Top = styled.div<{ isMobile: boolean }>`
   ${({ isMobile }) =>
-    isMobile &&
+    isMobile
+      ? css`
+          padding: 8px;
+        `
+      : css`
+          padding: 30px;
+        `}
+`;
+
+const Search = styled(SearchInputForm)<{ isMobile: boolean }>`
+  min-width: 150px;
+  ${({ isMobile }) =>
+    !isMobile &&
     css`
-      padding: 8px;
+      margin: 0 0 0 auto;
     `}
 `;
 
-const Search = styled(SearchInputForm)`
-  min-width: 150px;
-  ${({ isMobile }) =>
-    isMobile &&
-    css`
-      max-width: calc(100vw - 58px);
-    `}
+const SearchCondition = styled(SearchConditionModal)`
+  & > button {
+    display: block;
+    margin: 5px 0 0 auto;
+  }
+`;
+
+const PickUp1 = styled(PickUp)`
+  margin-top: 30px;
 `;
 
 export default TopComponent;

@@ -25,13 +25,11 @@ const InputForm = styled.div<{ isMobile: boolean }>`
   max-width: 300px;
   height: 40px;
   width: 100%;
-  margin: 30px 30px 30px auto;
   justify-content: space-between;
   ${({ isMobile }) =>
     isMobile &&
     css`
       max-width: initial;
-      height: 50px;
     `}
 `;
 

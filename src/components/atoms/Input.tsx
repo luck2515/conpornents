@@ -29,7 +29,8 @@ const InputComponent: React.FC<Props> = memo(
 );
 
 const Input = styled.input<{ fullWidth?: boolean; inputSize?: SizeVariation }>`
-  &:focus {
+  &:focus,
+  &:hover {
     /* chromeが自動付与する枠線を削除 */
     outline: none;
     border: 1px solid ${({ theme }) => theme.default.palette.black};
