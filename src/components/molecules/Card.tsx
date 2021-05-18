@@ -25,20 +25,21 @@ const Card = styled.div<{ isMobile: boolean }>`
   min-width: 150px;
   border: solid 1px ${({ theme }) => theme.default.palette.grey};
   cursor: pointer;
+  transition: 0.5s;
+  box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+  margin: 0 4px 4px 0;
+  &:hover {
+    box-shadow: 2px 2px 4px #ccc;
+  }
   ${({ isMobile }) =>
     isMobile &&
     css`
-      transition: 0.5s;
-      box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
       max-width: initial;
       margin-left: initial;
       margin-top: 8px;
       height: 120px;
       display: flex;
       width: 100%;
-      &:hover {
-        box-shadow: #ddd 2px 4px 4px;
-      }
     `}
 `;
 
