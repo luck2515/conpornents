@@ -21,8 +21,8 @@ const PickUpComponent: React.FC<Props> = memo(({ className, isMobile }) => {
           : 467 < width && width < 550
           ? array.slice(0, 2)
           : array
-        ).map(() => {
-          return <Card isMobile={isMobile} />;
+        ).map((_, index) => {
+          return <Card isMobile={isMobile} key={index} />;
         })}
       </CardList>
       <MoreLinkWrapper isMobile={isMobile}>

@@ -15,7 +15,7 @@ const TopComponent: React.FC<Props> = memo(({ className }) => {
     <Layout>
       <Top className={className} isMobile={isMobile}>
         <Search isMobile={isMobile} size="large" />
-        <SearchCondition />
+        <SearchCondition isMobile={isMobile} />
         <PickUp1 isMobile={isMobile} />
       </Top>
     </Layout>
