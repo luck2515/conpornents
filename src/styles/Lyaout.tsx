@@ -1,6 +1,8 @@
 import React, { memo } from "react";
 import styled from "styled-components";
 import Head from "next/head";
+import Header from "../components/organisms/Header";
+import Footer from "../components/organisms/Footer";
 
 interface Props {
   className?: string;
@@ -37,25 +39,13 @@ const Wrapper = styled.div`
   background-color: #f9f9f9;
 `;
 
-const Header = styled.header`
-  height: 100px;
-  background-color: #eee;
-`;
-
 const Main = styled.main`
   flex: 1;
+  margin: 12px 0;
   max-width: 960px;
   width: 100%;
   border: solid 1px #ccc;
   margin: 0 auto;
 `;
 
-const Footer = styled.footer`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30px;
-  background-color: #eee;
-`;
 export default Layout;
