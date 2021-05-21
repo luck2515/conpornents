@@ -1,17 +1,20 @@
 import React, { memo } from "react";
 import styled, { css } from "styled-components";
+import { useRouter } from "next/router";
 
 interface Props {
   className?: string;
   isMobile?: boolean;
 }
 const CardComponent: React.FC<Props> = memo(({ className, isMobile }) => {
+  const router = useRouter();
+  const onCardClick = React.useCallback(() => {
+    router.push({
+      pathname: "/detail",
+    });
+  }, []);
   return (
-    <Card
-      className={className}
-      isMobile={isMobile}
-      onClick={() => console.log("click")}
-    >
+    <Card className={className} isMobile={isMobile} onClick={onCardClick}>
       <CardImage isMobile={isMobile} />
       <CardText isMobile={isMobile} />
     </Card>

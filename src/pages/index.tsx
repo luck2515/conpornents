@@ -1,6 +1,8 @@
 import React from "react";
 import Top from "../components/templates/Top";
+import { NextPage } from "next";
 
-export default function Home() {
+const TopPage: NextPage = () => {
   return <Top />;
-}
+};
+export default TopPage;
